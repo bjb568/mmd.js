@@ -62,7 +62,7 @@ article li
 
 # Hello, this is mmd.js
 
-[mmd.js](mmd.js) is a standalone minimalist Markdown parser written in ~815 bytes of JavaScript.
+[mmd.js](mmd.js) is a standalone minimalist Markdown parser.
 
 All the cool kids use Markdown. If you are not familiar with it already, have a look at the [original Markdown syntax](http://daringfireball.net/projects/markdown/syntax). Check the source code of this page, it is written in Markdown and parsed using [mmd.js](mmd.js).
 
@@ -76,35 +76,31 @@ The input text is split into blocks separated by one or more blank lines. The ty
 
 ## How to use **mmd.js** ?
 
-    <script src=mmd.min.js></script>
-	<script>console.log( mmd('Markdown is **sweet**') );</script>
+	<script src="mmd.js"></script>
+	<script>console.log( markdown('Markdown is **sweet**') );</script>
 
 ## Supported features
 
-* Headers # 
-* Blockquotes >
-* Ordered lists 1
-* Unordered lists *
+* Headers ("#")
+* Blockquotes (">")
+* Ordered lists ("1. ", or "1) ")
+* Unordered lists ("*", or "-")
 * Paragraphs
 * Links []()
 * Images ![]()
-* Inline <em> emphasis *
-* Inline <strong> emphasis **
+* Inline &lt;em>phasis ("*")
+* Inline &ltstrong> emphasis ("**")
+* Inline code ("`")
 
 ## Unsupported features
 
 * References and IDs
 * Escaping of Markdown characters
-* Nesting
-
-## Supported browsers
-
-So far [mmd.js](mmd.js) has been tested in recent versions of Opera ( all flavours including Mini ), Chrome and Firefox. Pull requests addressing compatibility issues are most welcome, esp. regarding IE and Safari.
+* Nesting (especially with inline code)
 
 ## Why ?
 
 [mmd.js](mmd.js) is the result of some very intensive yak shaving. Let's be honest, it was just an excuse to procastinate and do something different.
-
 
 That's all folks.
 
