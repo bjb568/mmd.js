@@ -19,8 +19,8 @@ function markdown(src) {
 					.replace(/\[([^\]]+)]\(([^\s("&]+\.[^\s("&]+)\)/g, '$1'.link('$2'))
 					.replace(/([^;["])(https?:\/\/([^\s("&]+\.[^\s("&]+))/g, '$1' + '$3'.link('$2'))
 					.replace(/^(https?:\/\/([^\s("&]+\.[^\s("&]+))/g, '$2'.link('$1'))
-					.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-					.replace(/\*([^*]+)\*/g, '<em>$1</em>')
+					.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+					.replace(/\*(.+?)\*/g, '<em>$1</em>')
 					.replace(/---(.*?)---/g, '<s>$1</s>');
 			}
 		}).join('');
