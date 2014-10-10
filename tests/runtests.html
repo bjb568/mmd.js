@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mmd.js tests</title>
+    <meta charset="UTF-8" />
+    <style type="text/css">
+        .testresults {
+            width: 100%;
+        }
+
+        .heading {
+            font-family: sans-serif;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .green {
+            color: green;
+        }
+    </style>
+    <script type="text/javascript" src="../mmd.js"></script>
+    <script type="text/javascript" src="tests.js"></script>
+    <script type="text/javascript">
+        var failedTotalAmount = 0;
+        var succeededTotalAmount = 0;
+        function updateTableData(md, expectedHtml, parsedHtml, succeeded) {
+            var totalAmountSpans = document.getElementsByClassName("totalAmount");
+            for (var i = 0; i < totalAmountSpans.length; i++) {
+                var currTotalAmount = parseInt(totalAmountSpans[i].innerHTML, 10);
+                var newTotalAmount = currTotalAmount + 1;
+                totalAmountSpans[i].innerHTML = newTotalAmount;
+            }
+            if (succeeded === true) {
+                var succeededTestsTbody = document.getElementById("succeededtests").children[1];
+                var newRow = document.createElement("tr");
+                var newCell = document.createElement("td");
+                newCell.innerHTML = ["<code>", md, "</code> : passed"].join("").replace(/\n/g, "\\n");
+                newRow.appendChild(newCell);
+                succeededTestsTbody.appendChild(newRow);
+                succeededTotalAmount += 1;
+                document.getElementById("succeededAmount").innerHTML = succeededTotalAmount.toString(10);
+            }
+            else if (succeeded === false) {
+                var failedTestsTbody = document.getElementById("failedtests").children[1];
+                var mdRow = document.createElement("tr");
+                var mdCell = document.createElement("td");
+                mdCell.innerHTML = ["<code>", md, "</code> : failed"].join("").replace(/\n/g, "\\n");
+                mdRow.appendChild(mdCell);
+                var resultsRow = document.createElement("tr");
+                var resultsCell = document.createElement("td");
+                var parsedHtmlWithEntities = parsedHtml.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                var expectedHtmlWithEntities = expectedHtml.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                resultsCell.innerHTML = ["Got: <code>", parsedHtmlWithEntities, "</code> ; Expected: <code>", expectedHtmlWithEntities, "</code>"].join("").replace(/\n/g, "\\n");
+                resultsRow.appendChild(resultsCell);
+                failedTestsTbody.appendChild(mdRow);
+                failedTestsTbody.appendChild(resultsRow);
+                failedTotalAmount += 1;
+                document.getElementById("failedAmount").innerHTML = failedTotalAmount.toString(10);
+            }
+        }
+        testingCallbackFn = updateTableData;
+        window.onload = runTests;
+    </script>
+</head>
+<body>
+    <table class="testresults" id="failedtests">
+        <thead>
+            <tr>
+                <td><h2 class="heading red">Failed tests: <span id="failedAmount">0</span> / <span class="totalAmount">0</span></h2></td>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <table class="testresults" id="succeededtests">
+        <thead>
+            <tr>
+                <td><h2 class="heading green">Passed tests: <span id="succeededAmount">0</span> / <span class="totalAmount">0</span></h2></td>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>
