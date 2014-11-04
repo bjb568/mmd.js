@@ -1,4 +1,4 @@
-> **Notice:** This code (on this fork anyway) is no longer maintained. It has been superseeded with https://github.com/bjb568/Markdown-HTML
+> **Notice:** This code (on this fork anyway) is no longer maintained. It has been superseded with https://github.com/bjb568/Markdown-HTML
 
 # Hello, this is mmd.js
 
