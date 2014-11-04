@@ -1,3 +1,5 @@
+> **Notice:** This code (on this fork anyway) is no longer maintained. It has been superseeded with https://github.com/bjb568/Markdown-HTML
+
 # Hello, this is mmd.js
 
 [mmd.js](mmd.js) is a standalone minimalist Markdown parser written in ~815 bytes of JavaScript.
